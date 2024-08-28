@@ -1,0 +1,14 @@
+query Bu($id: String!) {
+  businessUnit(id: $id) {
+    key
+    name
+    version
+    id
+    custom {
+      customFieldsRaw {
+        name
+        value
+      }
+    }
+  }
+}

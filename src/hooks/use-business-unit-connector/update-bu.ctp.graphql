@@ -1,0 +1,12 @@
+mutation Bu($id: String!, $version: Long!, $actions: [BusinessUnitUpdateAction!]!) {
+  updateBusinessUnit(id: $id, version: $version , actions: $actions) {
+    key
+    name
+    custom {
+      customFieldsRaw {
+        name
+        value
+      }
+    }
+  }
+}
