@@ -21,8 +21,6 @@ const Partners = () => {
     container: CUSTOM_OBJECTS_CONTAINER,
   });
 
-  console.log(customObjectsPaginatedResult);
-
   let businessUnitId: string | undefined = undefined;
 
   if (hostUrl) {
