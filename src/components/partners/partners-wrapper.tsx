@@ -114,7 +114,9 @@ const PartnersWrapper = ({ businessUnitId, partners }: Props) => {
 
   return (
     <Spacings.Stack>
-      <Text.Headline as="h1">Partner list of {businessUnit?.key}</Text.Headline>
+      <Text.Headline as="h1">
+        Partner list of {businessUnit?.name || businessUnit?.key}
+      </Text.Headline>
       <PartnerList
         businessUnitId={businessUnitId}
         customObjects={referencedResources}

@@ -6,7 +6,7 @@ import PrimaryButton from '@commercetools-uikit/primary-button';
 import IconButton from '@commercetools-uikit/icon-button';
 import { CloseIcon, PlusBoldIcon } from '@commercetools-uikit/icons';
 import { TCustomObject } from '../../types/generated/ctp';
-
+import Text from '@commercetools-uikit/text';
 type Props = {
   businessUnitId: string;
   customObjects: { id: string; typeId: 'key-value-document' }[];
@@ -63,6 +63,9 @@ const PartnerList = ({
               <FieldArray name="customObjects">
                 {({ insert, remove, push }) => (
                   <Spacings.Stack>
+                    {values.customObjects.length === 0 && (
+                      <Text.Headline as="h3">No partners found.</Text.Headline>
+                    )}
                     {values.customObjects.map((customObject, index) => (
                       <Spacings.Inline
                         key={customObject.id}
