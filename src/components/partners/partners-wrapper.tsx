@@ -91,12 +91,10 @@ const PartnersWrapper = ({ businessUnitId, partners }: Props) => {
     return (
       <Spacings.Stack alignItems={'flexStart'}>
         <ContentNotification type="info">
-          <Text.Body>
-            {`Attribute with name "${CUSTOM_TYPE_FIELD}" cannot be found.`}
-          </Text.Body>
+          <Text.Body>Partner custom type is not set.</Text.Body>
         </ContentNotification>
         <PrimaryButton
-          label={`create and link`}
+          label={`Set custom type`}
           onClick={onCreateCustomField}
         />
       </Spacings.Stack>
