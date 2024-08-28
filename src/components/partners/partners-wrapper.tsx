@@ -47,9 +47,7 @@ const PartnersWrapper = ({ businessUnitId, partners }: Props) => {
     );
   }
 
-  const onCreateCustomField = async (
-    fieldValues: TCustomObject['value'][] = []
-  ) => {
+  const onCreateCustomField = async () => {
     await businessUnitUpdater.execute({
       actions: [
         {
@@ -61,7 +59,7 @@ const PartnersWrapper = ({ businessUnitId, partners }: Props) => {
             fields: [
               {
                 name: CUSTOM_TYPE_FIELD,
-                value: JSON.stringify(fieldValues),
+                value: JSON.stringify([]),
               },
             ],
           },
@@ -74,8 +72,27 @@ const PartnersWrapper = ({ businessUnitId, partners }: Props) => {
   };
 
   const handleSave = async (customObjects: TCustomObject['value'][]) => {
-    console.log(customObjects);
-    await onCreateCustomField(customObjects);
+    await businessUnitUpdater.execute({
+      actions: [
+        {
+          setCustomType: {
+            type: {
+              key: CUSTOM_TYPE_KEY,
+              typeId: 'type',
+            },
+            fields: [
+              {
+                name: CUSTOM_TYPE_FIELD,
+                value: JSON.stringify(customObjects),
+              },
+            ],
+          },
+        },
+      ],
+      version: businessUnit?.version!,
+      id: businessUnitId,
+    });
+    refetch();
     showNotification({
       kind: NOTIFICATION_KINDS_SIDE.success,
       domain: DOMAINS.SIDE,
